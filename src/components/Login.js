@@ -2,7 +2,7 @@
  * Created by yufei on 2018/12/16.
  */
 import React from 'react';
-import { Form, Icon, Input, Button, Checkbox, message } from 'antd';
+import { Form, Icon, Input, Button, message } from 'antd';
 import { Link } from 'react-router-dom';
 import { API_ROOT } from '../constants';
 
