@@ -9,7 +9,7 @@ export class TopBar extends React.Component {
         return (
             <header className="App-header">
                 <img src={logo} className="App-logo" alt="logo" />
-                <span className="App-title">Around</span>
+                <div className="App-title">Around</div>
             </header>
         );
     }
