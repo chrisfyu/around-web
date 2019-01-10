@@ -1,8 +1,12 @@
 /**
  * Created by yufei on 2019/1/7.
  */
-import React from 'react'
-import { GoogleMap, withGoogleMap, withScriptjs } from 'react-google-maps';
+import React from 'react';
+import {
+    withScriptjs,
+    withGoogleMap,
+    GoogleMap,
+} from "react-google-maps";
 import { AroundMarker } from './AroundMarker';
 import { POS_KEY } from '../constants';
 
@@ -10,12 +14,16 @@ class NormalAroundMap extends React.Component {
     reloadMarkers = () => {
         const center = this.getCenter();
         const radius = this.getRadius();
-        this.props.loadNearbyPosts(center, radius);
+        if (this.props.topic === 'around') {
+            this.props.loadNearbyPosts(center, radius);
+        } else {
+            this.props.loadFacesAroundTheWorld();
+        }
     }
 
     getCenter = () => {
         const center = this.map.getCenter();
-        return { lat: center.lat(), lon: center.lng() };
+        return { lat: center.lat(), lon: center.lng() }
     }
 
     getRadius = () => {
@@ -28,13 +36,12 @@ class NormalAroundMap extends React.Component {
         }
     }
 
-
     getMapRef = (mapInstance) => {
         this.map = mapInstance;
     }
 
     render() {
-        const { lat, lon: lng } = JSON.parse(localStorage.getItem(POS_KEY));
+        const { lat, lon : lng } = JSON.parse(localStorage.getItem(POS_KEY));
         return (
             <GoogleMap
                 ref={this.getMapRef}
